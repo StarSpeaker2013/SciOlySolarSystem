@@ -62,7 +62,7 @@ function openExplorer(nextPlace){
 }
 function render(){
   const needle=query.toLowerCase();
-  const shown=availableObjects().filter(o=>(type==='All'||o.type===type)&&(!needle||`${o.name} ${o.summary} ${o.facts.join(' ')}`.toLowerCase().includes(needle)));
+  const shown=availableObjects().filter(o=>(type==='All'||o.type===type)&&(!needle||`${o.name} ${o.summary} ${o.facts.join(' ')} ${(o.physics||[]).join(' ')}`.toLowerCase().includes(needle)));
   title.textContent=`${placeNames[place]} · ${type}`;
   resultCount.textContent=`${shown.length} study ${shown.length===1?'entry':'entries'}`;
   cards.innerHTML=shown.map(o=>`<button class="card" data-name="${encodeURIComponent(o.name)}" aria-label="Open quick profile for ${o.name}"><span class="card-icon" style="--color:${o.color}"><span>${o.icon}</span><img data-subject="${o.name}" alt="${o.name}" loading="lazy"></span><h3>${o.name}</h3><small>${o.type}${o.parent?` · Orbits ${o.parent}`:''}</small><p>${o.summary}</p><span class="open-card">Quick view <b>→</b></span></button>`).join('')||'<p>No matching study entries.</p>';
@@ -92,6 +92,7 @@ function quickFactsFor(o){
 function show(name){
   const o=objects.find(x=>x.name===name);if(!o)return;
   const quickFacts=quickFactsFor(o);
+  const physics=o.physics||[];
   const moons=objects.filter(x=>x.parent===o.name);
   const family=moons.length?moons:o.parent?objects.filter(x=>x.name===o.parent):[];
   const similar=objects.filter(x=>x.type===o.type&&x.name!==o.name&&!family.includes(x)).slice(0,6);
@@ -99,7 +100,7 @@ function show(name){
   const peers=objects.filter(x=>x.type===o.type);const index=peers.indexOf(o);
   const previous=peers[(index-1+peers.length)%peers.length];const next=peers[(index+1)%peers.length];
   explorer.classList.add('hidden');details.classList.remove('hidden');
-  details.innerHTML=`<button class="back" id="backToList">← Back to list</button><section class="detail-header"><div class="hero-object" style="--color:${o.color}"><span>${o.icon}</span><img data-subject="${o.name}" alt="${o.name}"></div><div><span class="detail-tag">${o.type}</span><span class="detail-tag">${placeNames[o.place]}</span><h2>${o.name}</h2><p>${o.summary}</p></div></section><h3 class="section-heading">Quick facts</h3><div class="facts">${Array.from({length:quickFacts.length/2},(_,i)=>`<div class="fact"><b>${quickFacts[i*2]}</b><span>${quickFacts[i*2+1]}</span></div>`).join('')}</div>${related.length?`<section class="related"><h3>Keep exploring</h3><div class="related-list">${related.map(item=>`<button data-related="${encodeURIComponent(item.name)}">${item.name}<small>${item.type}</small></button>`).join('')}</div></section>`:''}<nav class="detail-nav"><button data-related="${encodeURIComponent(previous.name)}">← ${previous.name}</button><button data-related="${encodeURIComponent(next.name)}">${next.name} →</button></nav>`;
+  details.innerHTML=`<button class="back" id="backToList">← Back to list</button><section class="detail-header"><div class="hero-object" style="--color:${o.color}"><span>${o.icon}</span><img data-subject="${o.name}" alt="${o.name}"></div><div><span class="detail-tag">${o.type}</span><span class="detail-tag">${placeNames[o.place]}</span><h2>${o.name}</h2><p>${o.summary}</p></div></section><h3 class="section-heading">Quick facts</h3><div class="facts">${Array.from({length:quickFacts.length/2},(_,i)=>`<div class="fact"><b>${quickFacts[i*2]}</b><span>${quickFacts[i*2+1]}</span></div>`).join('')}</div>${physics.length?`<h3 class="section-heading">Physics</h3><div class="facts">${Array.from({length:physics.length/2},(_,i)=>`<div class="fact"><b>${physics[i*2]}</b><span>${physics[i*2+1]}</span></div>`).join('')}</div>`:''}${related.length?`<section class="related"><h3>Keep exploring</h3><div class="related-list">${related.map(item=>`<button data-related="${encodeURIComponent(item.name)}">${item.name}<small>${item.type}</small></button>`).join('')}</div></section>`:''}<nav class="detail-nav"><button data-related="${encodeURIComponent(previous.name)}">← ${previous.name}</button><button data-related="${encodeURIComponent(next.name)}">${next.name} →</button></nav>`;
   document.querySelector('#backToList').onclick=closeDetails;
   details.querySelectorAll('[data-related]').forEach(button=>button.onclick=()=>show(decodeURIComponent(button.dataset.related)));
   hydrateImages(details);
