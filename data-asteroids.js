@@ -1,0 +1,3 @@
+window.GUIDE_DATA.push(...[
+['Bennu','B-type','Near-Earth carbon-rich rubble pile; hydrated minerals and organics'],['Ceres','C-type/dwarf planet','Largest asteroid-belt object; hydrated minerals, salts, and ice'],['Vesta','V-type','Basaltic differentiated body and source of HED meteorites'],['Eros','S-type','Silicate and nickel–iron near-Earth asteroid'],['Itokawa','S-type','Rubble pile containing olivine, pyroxene, plagioclase, metal, and troilite'],['Hygiea','C-type','Nearly spherical carbonaceous main-belt object'],['16 Psyche','M-type','Metal-rich asteroid and possible exposed protoplanet core']
+].map(x=>({name:x[0]+' (Asteroid)',place:'inside',type:'Asteroids',icon:'◆',color:'#8b715c',summary:x[2],facts:['Class',x[1],'Key traits',x[2]]})));

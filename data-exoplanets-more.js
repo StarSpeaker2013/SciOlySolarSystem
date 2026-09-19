@@ -1,0 +1,22 @@
+window.GUIDE_DATA.push(...[
+['Kepler-22b','Possible sub-Neptune in the habitable zone of a Sun-like star.','~638 ly','2.1 Earth radii','289.9 days','Transit','Its composition and surface conditions remain unknown'],
+['Kepler-186f','First roughly Earth-sized planet found in another star’s habitable zone.','~582 ly','1.17 Earth radii','129.9 days','Transit','Orbits a cool red dwarf'],
+['Kepler-452b','Long-period super-Earth candidate orbiting a Sun-like star.','~1,800 ly','~1.6 Earth radii','384.8 days','Transit','Receives slightly more energy than Earth'],
+['TOI-700 d','Earth-sized planet in the habitable zone of a quiet red dwarf.','~101 ly','~1.07 Earth radii','37.4 days','Transit','Likely rocky; atmosphere not yet confirmed'],
+['TOI-700 e','Approximately Earth-sized world near the inner edge of its star’s habitable zone.','~101 ly','~0.95 Earth radii','27.8 days','Transit','Likely rocky'],
+['LHS 1140 b','Dense temperate super-Earth and strong atmospheric-study target.','~49 ly','~1.7 Earth radii','24.7 days','Transit and radial velocity','May retain an atmosphere and substantial water'],
+['GJ 1214 b','Warm sub-Neptune with a high-altitude hazy atmosphere.','~48 ly','~2.7 Earth radii','1.58 days','Transit','Likely volatile-rich rather than Earth-like'],
+['55 Cancri e','Ultra-hot super-Earth likely covered by molten rock.','~41 ly','~1.9 Earth radii','17.7 hours','Transit and radial velocity','Strong day–night temperature contrast'],
+['CoRoT-7b','One of the first transiting super-Earths discovered.','~489 ly','~1.6 Earth radii','20.5 hours','Transit and radial velocity','Ultra-short orbit; likely a hot rocky world'],
+['GJ 367 b','Small ultra-short-period planet with unusually high density.','~31 ly','~0.7 Earth radii','7.7 hours','Transit and radial velocity','Likely has a large iron core'],
+['Kepler-16b','Saturn-sized circumbinary planet orbiting two stars.','~245 ly','~0.75 Jupiter radii','228.8 days','Transit','Nicknamed a real-life Tatooine'],
+['HD 209458 b','First transiting exoplanet with a detected atmosphere.','~159 ly','~1.36 Jupiter radii','3.52 days','Transit and radial velocity','Hot Jupiter with an escaping atmosphere'],
+['HD 189733 b','Hot Jupiter known for atmospheric studies and extreme weather.','~64.5 ly','~1.14 Jupiter radii','2.22 days','Transit and radial velocity','Deep blue appearance; silicate clouds are inferred'],
+['WASP-12b','Ultra-hot Jupiter being tidally distorted very close to its star.','~1,400 ly','~1.9 Jupiter radii','1.09 days','Transit','Atmosphere is escaping onto its star'],
+['WASP-39b','Hot Saturn whose atmosphere has been studied in detail by JWST.','~700 ly','~1.27 Jupiter radii','4.06 days','Transit','Atmosphere contains CO₂, water vapor, and sulfur dioxide'],
+['WASP-96b','Hot Saturn with a well-observed transmission spectrum.','~1,150 ly','~1.2 Jupiter radii','3.43 days','Transit','JWST detected atmospheric water signatures'],
+['Beta Pictoris b','Young massive giant directly imaged in a dusty planetary system.','~63 ly','~1.5 Jupiter radii','~20–24 years','Direct imaging','About 10–13 Jupiter masses; orbit viewed nearly edge-on'],
+['HR 8799 e','One of four directly imaged giant planets around HR 8799.','~133 ly','~1.2 Jupiter radii','~50 years','Direct imaging','Young, hot atmosphere with clouds and molecules'],
+['PDS 70 b','Young giant planet still forming within a protoplanetary disk.','~370 ly','~2 Jupiter radii','~120 years','Direct imaging','Evidence of a circumplanetary disk and ongoing accretion'],
+['HIP 65426 b','Young super-Jupiter directly imaged far from its host star.','~355 ly','~1.4 Jupiter radii','Hundreds of years','Direct imaging','One of JWST’s first directly imaged exoplanets']
+].map(x=>({name:x[0],place:'outside',type:'Exoplanets',icon:'●',color:x[5]==='Direct imaging'?'#c88955':x[2].includes('Jupiter')?'#bd704c':'#618ac4',summary:x[1],facts:['Distance',x[2],'Size',x[3],'Orbital period',x[4],'Detection method',x[5],'Why it matters',x[6]]})));

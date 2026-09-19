@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SciOly Solar System Study Guide</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#f1f5ff;background:radial-gradient(circle at 50% -10%,#263d7a,#080b19 55%)}button{font:inherit}header{text-align:center;padding:4rem 1.5rem 2.5rem}header button{color:inherit;background:none;border:0;cursor:pointer}h1{margin:0;font-size:clamp(2.5rem,7vw,5rem)}header p{color:#b8c5e2;font-size:1.1rem}.shell{max-width:1100px;margin:auto;padding:0 1.5rem 4rem}.locations,.types{display:grid;gap:1rem}.locations{grid-template-columns:repeat(2,1fr);margin-bottom:2rem}.category{min-height:170px;padding:1.5rem;text-align:left;color:inherit;cursor:pointer;border:1px solid #455a8d;border-radius:20px;background:linear-gradient(135deg,#263c70,#111a36);transition:.2s}.category:hover{transform:translateY(-4px);border-color:#8eacff}.category .icon{display:block;font-size:2.5rem}.category strong{display:block;margin:.6rem 0;font-size:1.35rem}.category span,.subtitle{color:#bdc9e2}.types{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));margin:1rem 0 2rem}#search{width:100%;margin:1rem 0 0;padding:1rem;color:#eef3ff;border:1px solid #455a8d;border-radius:12px;background:#101a34;font:inherit}#search:focus{outline:2px solid #7da2ff}.type{padding:.8rem;color:#dce6ff;cursor:pointer;border:1px solid #394a72;border-radius:999px;background:#131d38}.type:hover,.type.active{background:#34549a;border-color:#89aaff}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem}.back{padding:.65rem 1rem;color:inherit;cursor:pointer;border:1px solid #4b6093;border-radius:10px;background:#172442}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.card{padding:1.2rem;text-align:left;color:inherit;cursor:pointer;border:1px solid #34466f;border-radius:16px;background:#111a32;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#83a5ff}.card-icon{display:grid;place-items:center;width:70px;aspect-ratio:1;border-radius:50%;font-size:2rem;background:radial-gradient(circle at 35% 30%,#fff,var(--color) 35%,#111 80%);box-shadow:0 0 25px color-mix(in srgb,var(--color),transparent 55%)}.card h3{margin:.9rem 0 .25rem}.card small{color:#9fb1d7}.details{padding:1.5rem;border:1px solid #405586;border-radius:20px;background:#101831}.hero-object{display:grid;place-items:center;width:130px;aspect-ratio:1;border-radius:50%;font-size:3.5rem;background:radial-gradient(circle at 35% 30%,#fff,var(--color) 38%,#080b14 78%);box-shadow:0 0 45px var(--color)}.details h2{font-size:2.2rem;margin:.9rem 0}.details>p{color:#c4cee4;line-height:1.7}.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}.fact{padding:1rem;border-radius:12px;background:#17213e}.fact b{display:block;color:#8facff;font-size:.75rem;text-transform:uppercase;margin-bottom:.3rem}.related{margin-top:1.5rem}.related-list{display:flex;flex-wrap:wrap;gap:.6rem}.related-list button{padding:.65rem 1rem;color:#eef3ff;cursor:pointer;border:1px solid #5874b2;border-radius:999px;background:#20345f}.related-list button:hover{background:#34549a}.hidden{display:none}@media(max-width:750px){.locations,.cards{grid-template-columns:1fr}.types{grid-template-columns:repeat(2,1fr)}.toolbar{align-items:flex-start;flex-direction:column}}
+.open-card{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:.8rem;color:#9fbcff;border-top:1px solid #2c3c61;font-weight:700}.card:hover .open-card{color:#fff}.card:focus-visible{outline:3px solid #8eacff;outline-offset:3px}.detail-header{display:grid;grid-template-columns:150px 1fr;gap:2rem;align-items:center;margin:1.5rem 0 2rem}.detail-header h2{margin:.6rem 0}.detail-header p{color:#c4cee4;line-height:1.7}.detail-tag{display:inline-block;margin:0 .4rem .3rem 0;padding:.35rem .7rem;border:1px solid #4f679d;border-radius:999px;color:#bcd0ff;font-size:.8rem}.section-heading{margin-top:2rem}.fact span{line-height:1.5}.related-list button small{display:block;margin-top:.2rem;color:#aebddd}.detail-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #34466f}.detail-nav button{padding:.8rem 1rem;color:#eef3ff;cursor:pointer;border:1px solid #5874b2;border-radius:10px;background:#172442}.detail-nav button:hover{background:#34549a}@media(max-width:600px){.detail-header{grid-template-columns:1fr}.detail-nav{align-items:stretch;flex-direction:column}}
+/* Deep-space backdrop and subject portraits */
+body{position:relative;background:#03050f;overflow-x:hidden}#spaceBackground{position:fixed;inset:0;z-index:0;pointer-events:none}header,.shell{position:relative;z-index:1}header{text-shadow:0 2px 20px #3966c9}.category,.card,.details{backdrop-filter:blur(12px);background-color:rgba(12,20,44,.86)}.card-icon,.hero-object{position:relative;overflow:hidden}.card-icon img,.hero-object img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease}.card-icon img.loaded,.hero-object img.loaded{opacity:1}.card-icon span,.hero-object span{position:relative;z-index:0}.card-icon{border:2px solid rgba(184,207,255,.55)}.hero-object{border:3px solid rgba(184,207,255,.65)}@media(prefers-reduced-motion:reduce){#spaceBackground{opacity:.9}}
+</style>
+</head>
+<body>
+<canvas id="spaceBackground" aria-hidden="true"></canvas>
+<header><button onclick="goHome()"><h1>SciOly Solar System Study Guide</h1></button><p>Explore objects, missions, observations, physics, and planetary science.</p></header>
+<main class="shell">
+<section id="home">
+<h2>Where would you like to explore?</h2>
+<div class="locations">
+<button class="category" data-place="inside"><span class="icon">☀️</span><strong>Within the Solar System</strong><span>Study planets, dwarf planets, moons, asteroids, comets, and small bodies.</span></button>
+<button class="category" data-place="outside"><span class="icon">🌌</span><strong>Outside the Solar System</strong><span>Discover distant stars, exoplanets, nebulas, and galaxies.</span></button>
+</div>
+<h2>Or browse everything</h2>
+<div class="locations"><button class="category" data-place="all"><span class="icon">🚀</span><strong>Explore All Space</strong><span>See every object in the collection.</span></button><button class="category" data-place="study"><span class="icon">📚</span><strong>Study Topics & Missions</strong><span>Review physics, formation, observations, missions, and key terms.</span></button></div>
+</section>
+<section id="explorer" class="hidden">
+<div class="toolbar"><button class="back" onclick="goHome()">← Home</button><h2 id="sectionTitle"></h2></div>
+<input id="search" type="search" placeholder="Search the study guide…" aria-label="Search study guide">
+<nav class="types" id="types" aria-label="Object types"></nav>
+<p id="resultCount" class="subtitle"></p>
+<div class="cards" id="cards"></div>
+</section>
+<article class="details hidden" id="details" aria-live="polite"></article>
+</main>
+<script src="data-planets.js"></script>
+<script src="data-stars-moons.js"></script>
+<script src="data-comets-small.js"></script>
+<script src="data-asteroids.js"></script>
+<script src="data-deep-space.js"></script>
+<script src="data-exoplanets.js"></script>
+<script src="data-exoplanets-more.js"></script>
+<script src="data-missions.js"></script>
+<script src="data-theory.js"></script>
+<script src="data-theory-more.js"></script>
+<script src="guide.js"></script>
+</body>
+</html>
