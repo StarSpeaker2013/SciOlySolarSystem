@@ -69,9 +69,29 @@ function render(){
   cards.querySelectorAll('.card').forEach(card=>card.onclick=()=>show(decodeURIComponent(card.dataset.name)));
   hydrateImages(cards);
 }
+function quickFactsFor(o){
+  const pairs=Array.from({length:o.facts.length/2},(_,i)=>[o.facts[i*2],o.facts[i*2+1]]);
+  const priorities={
+    Planets:['Diameter','Distance from Sun','Composition','Gravity','Average temperature','Moons','Year','Day','Atmosphere'],
+    'Dwarf Planets':['Diameter','Composition','Distance from Sun','Discovered','Gravity','Temperature','Moons','Year'],
+    Stars:['Distance','Radius','Mass','Spectral type','Temperature','Luminosity'],
+    Moons:['Diameter','Distance from Earth','Composition','Orbits','Discovered by','Known since','Key traits'],
+    Comets:['Size','Composition','Orbital period','Discovered by','Good to know','Key facts'],
+    'Small Bodies':['Size','Diameter','Composition / traits','Composition','Discovered by','Good to know'],
+    Asteroids:['Size','Diameter','Composition','Class','Discovered by','Good to know','Key traits'],
+    Galaxies:['Distance from Earth','Diameter','Galaxy type','Key facts'],
+    Nebulas:['Distance from Earth','Size','Nebula type','Discovered by','Known since','Key traits'],
+    Exoplanets:['Distance','Size','Radius','Mass','Composition','Orbital period','Year','Detection method','Why it matters'],
+    Missions:['Mission summary']
+  }[o.type]||[];
+  return pairs.sort((a,b)=>{
+    const ai=priorities.indexOf(a[0]),bi=priorities.indexOf(b[0]);
+    return (ai<0?999:ai)-(bi<0?999:bi);
+  }).slice(0,6).flat();
+}
 function show(name){
   const o=objects.find(x=>x.name===name);if(!o)return;
-  const quickFacts=o.facts.slice(0,12);
+  const quickFacts=quickFactsFor(o);
   const moons=objects.filter(x=>x.parent===o.name);
   const family=moons.length?moons:o.parent?objects.filter(x=>x.name===o.parent):[];
   const similar=objects.filter(x=>x.type===o.type&&x.name!==o.name&&!family.includes(x)).slice(0,6);
